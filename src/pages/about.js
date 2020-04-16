@@ -1,7 +1,13 @@
 import React from "react"
-export default () => (
-  <div style={{ color: `teal` }}>
-    <h1>About Gatsby</h1>
-    <p>Nice and easy, as it should be.</p>
-  </div>
-)
+function AboutPage(props) {
+  
+  const sayHello = "Hi!! I'm a variable.";
+
+
+  return (
+    <div className="about-container">
+      <p>{sayHello}</p>
+    </div>
+  )
+}
+export default AboutPage
