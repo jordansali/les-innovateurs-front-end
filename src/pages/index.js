@@ -1,8 +1,9 @@
 /*Component names must start with a capital */
 import React from "react"
-import TestComponent from "../components/testComponent"
+import PropsComponent from "../components/PropsComponent"
 import CalcComp from "../components/CalcComp"
 import CheckBoxComp from "../components/CheckBoxComp"
+import OrderedTableComp from "../components/OrderedTableComp"
 /*Any React component defined in src/pages/*.js will automatically become a page.*/
 /*Everything within 'export' must have one parent tag */
 export default () => (
@@ -11,12 +12,15 @@ export default () => (
         <div>Hello world!!! People...! This is a test site built using Gatsby. Test of change</div>
         <br />
         <br />
-        <TestComponent ButtonText="Test of a Property"/>
+        <PropsComponent PText="Test of a Property"/>
         <br />
         <br />
         <CalcComp />
         <br />
         <br />
         <CheckBoxComp></CheckBoxComp>
+        <br />
+        <br />
+        <OrderedTableComp></OrderedTableComp>
     </div>
 )
