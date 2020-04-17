@@ -3,8 +3,11 @@ import React from "react"
 
 function Calculator() {
     const calculate = () =>{
-        var number = document.getElementById("num1").value
-        document.getElementById("btn1").innerHTML = "number: " + number;
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        var sum1 = num1+num2;
+        
+        document.getElementById("sum1").innerHTML = sum1;
     };
     return (
         <div>
@@ -15,7 +18,8 @@ function Calculator() {
         <label htmlFor="num2">Number 2:</label>
         <input type="number" id="num2" name="num2"/><br/><br/>
 
-        <button onClick={calculate} id="btn1">CLick me</button>
+        <button onClick={calculate} id="btn1">Add</button><br/><br/>
+        <label id="sum1">0.0</label>
     </div>
     )
 }
