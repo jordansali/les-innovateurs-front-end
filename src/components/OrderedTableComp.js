@@ -3,7 +3,7 @@ import React from "react"
 
 function OrderedTable() {
     //Here is where we store javascript functions
-    const order = () =>{
+    function order(){
         var selected = document.getElementById("order").value;
         
         switch(selected) {
@@ -11,7 +11,7 @@ function OrderedTable() {
                 alert("unooordered");
                 break;
             case "AlphaDescending":
-                alert("alpha descennnd");
+                sortTable();
                 break;
             case "AlphaAscending":
                 alert("alpha ascennnd");
@@ -20,6 +20,41 @@ function OrderedTable() {
                 alert("default");
         } //end switch
     };
+
+    function sortTable() { 
+        var table, i, x, y; 
+        table = document.getElementById("table"); 
+        var switching = true; 
+
+        // Run loop until no switching is needed 
+        while (switching) { 
+            switching = false; 
+            var rows = table.rows; 
+
+            // Loop to go through all rows 
+            for (i = 1; i < (rows.length - 1); i++) { 
+                var Switch = false; 
+
+                // Fetch 2 elements that need to be compared 
+                x = rows[i].getElementsByTagName("TD")[0]; 
+                y = rows[i + 1].getElementsByTagName("TD")[0]; 
+
+                // Check if 2 rows need to be switched 
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) 
+                    { 
+
+                    // If yes, mark Switch as needed and break loop 
+                    Switch = true; 
+                    break; 
+                } 
+            } 
+            if (Switch) { 
+                // Function to switch rows and mark switch as completed 
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); 
+                switching = true; 
+            } 
+        } 
+    }
     //Gatsby turns the following "html" into react javascript.
     return (
     <div>
@@ -32,7 +67,7 @@ function OrderedTable() {
             <option value="AlphaAscending">Alphabetical - Ascending</option>
         </select>
 
-        <table>
+        <table id="table">
             <tr>
                 <th>Devs</th>
             </tr>
