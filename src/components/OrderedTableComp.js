@@ -2,7 +2,14 @@ import React from "react"
 
 
 function OrderedTable() {
+    // Array for table
+    var data = ["Daniel", "Jordan", "Nic", "Selina", "Vlad", "Shanique"];
+
     //Here is where we store javascript functions
+
+    window.onload = () => {
+        alert("loaded");
+    };
     function order(){
         var selected = document.getElementById("order").value;
         
@@ -54,7 +61,7 @@ function OrderedTable() {
                 switching = true; 
             } 
         } 
-    }
+    };
     //Gatsby turns the following "html" into react javascript.
     return (
     <div>
