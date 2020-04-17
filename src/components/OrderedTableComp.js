@@ -19,17 +19,27 @@ function OrderedTable() {
         </select>
 
         <table>
-            <thead>
-                <tr>Devs</tr>
-            </thead>
-            <tbody>
-                <tr>Daniel</tr>
-                <tr>Jordan</tr>
-                <tr>Nic</tr>
-                <tr>Vlad</tr>
-                <tr>Selina</tr>
-                <tr>Shanique</tr>
-            </tbody>
+            <tr>
+                <th>Devs</th>
+            </tr>
+            <tr>
+                <td>Daniel</td>
+            </tr>
+            <tr>
+                <td>Jordan</td>
+            </tr>
+            <tr>
+                <td>Nic</td>
+            </tr>
+            <tr>
+                <td>Vlad</td>
+            </tr>
+            <tr>
+                <td>Selina</td>
+            </tr>
+            <tr>
+                <td>Shanique</td>
+            </tr>
         </table>
 
     </div>
