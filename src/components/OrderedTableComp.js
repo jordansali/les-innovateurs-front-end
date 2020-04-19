@@ -3,13 +3,32 @@ import React from "react"
 
 function OrderedTable() {
     // Array for table
-    var data = ["Daniel", "Jordan", "Nic", "Selina", "Vlad", "Shanique"];
+    let devList = [
+        {dev: "Daniel"},
+        {dev: "Jordan"}, 
+        {dev: "Nic"}, 
+        {dev: "Selina"}, 
+        {dev: "Vlad"}, 
+        {dev: "Shanique"}
+    ];
 
     //Here is where we store javascript functions
 
-    window.onload = () => {
-        alert("loaded");
-    };
+    function generateTable() {
+        var table = document.getElementById("table2");
+        alert(table);
+        let data = Object.keys(devList[0]);
+
+        let thead = table.createTHead();
+        let row = thead.insertRow();
+        for (let key of data) {
+            let th = document.createElement("th");
+            let text = document.createTextNode(key);
+            th.appendChild(text);
+            row.appendChild(th);
+        }
+    }
+
     function order(){
         var selected = document.getElementById("order").value;
         
@@ -62,6 +81,10 @@ function OrderedTable() {
             } 
         } 
     };
+    //Calling function upon start of component
+
+
+
     //Gatsby turns the following "html" into react javascript.
     return (
     <div>
@@ -73,6 +96,7 @@ function OrderedTable() {
             <option value="AlphaDescending">Alphabetical - Descending</option>
             <option value="AlphaAscending">Alphabetical - Ascending</option>
         </select>
+        <button onClick={generateTable}>Sort</button>
 
         <table id="table">
             <tr>
@@ -96,6 +120,10 @@ function OrderedTable() {
             <tr>
                 <td>Shanique</td>
             </tr>
+        </table>
+
+        <table id="table2">
+
         </table>
 
     </div>
