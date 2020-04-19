@@ -5,28 +5,59 @@ function OrderedTable() {
     // Array for table
     let devList = [
         {dev: "Daniel"},
-        {dev: "Jordan"}, 
+        {Devs: "Jordan"}, 
         {dev: "Nic"}, 
         {dev: "Selina"}, 
         {dev: "Vlad"}, 
         {dev: "Shanique"}
     ];
 
+    let mountains = [
+        { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
+        { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
+        { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
+        { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
+        { name: "Monte Amiata", height: 1738, place: "Siena" }
+      ];
+
     //Here is where we store javascript functions
 
     function generateTable() {
         var table = document.getElementById("table2");
-        alert(table);
+        clearTable("table2"); //Clear table before generating
         let data = Object.keys(devList[0]);
 
         let thead = table.createTHead();
         let row = thead.insertRow();
+
+        //Generate table head
         for (let key of data) {
             let th = document.createElement("th");
             let text = document.createTextNode(key);
             th.appendChild(text);
             row.appendChild(th);
         }
+
+        //Generate table body
+        for (let element of devList) {
+            let row = table.insertRow();
+            for (let key in element) {
+              let cell = row.insertCell();
+              let text = document.createTextNode(element[key]);
+              cell.appendChild(text);
+            }
+          }
+    }
+
+    function clearTable(table){
+        var e = document.getElementById(table); 
+        
+        //e.firstElementChild can be used. 
+        var child = e.lastElementChild;  
+        while (child) { 
+            e.removeChild(child); 
+            child = e.lastElementChild; 
+        } 
     }
 
     function order(){
@@ -82,9 +113,9 @@ function OrderedTable() {
         } 
     };
     //Calling function upon start of component
+    
 
-
-
+    
     //Gatsby turns the following "html" into react javascript.
     return (
     <div>
