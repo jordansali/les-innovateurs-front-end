@@ -5,26 +5,26 @@ function OrderedTable() {
     // Array for table
     let devList = [
         {dev: "Daniel"},
-        {Devs: "Jordan"}, 
+        {dev: "Vlad"}, 
+        {dev: "Jordan"}, 
         {dev: "Nic"}, 
         {dev: "Selina"}, 
-        {dev: "Vlad"}, 
         {dev: "Shanique"}
     ];
-
-    let mountains = [
-        { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
-        { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
-        { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
-        { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
-        { name: "Monte Amiata", height: 1738, place: "Siena" }
-      ];
 
     //Here is where we store javascript functions
 
     function generateTable() {
-        var table = document.getElementById("table2");
-        clearTable("table2"); //Clear table before generating
+        var divTable = document.getElementById("divTable");
+        var table = document.getElementById("table");
+
+        if (table == null) {
+            table = document.createElement("TABLE");
+            table.setAttribute("id", "table");
+            divTable.appendChild(table); 
+        }
+        
+        clearTable("table"); //Clear table before generating
         let data = Object.keys(devList[0]);
 
         let thead = table.createTHead();
@@ -65,20 +65,20 @@ function OrderedTable() {
         
         switch(selected) {
             case "Unordered":
-                alert("unooordered");
+                generateTable();
                 break;
             case "AlphaDescending":
-                sortTable();
+                sortTable(true);
                 break;
             case "AlphaAscending":
-                alert("alpha ascennnd");
+                sortTable(false);
                 break;
             default:
                 alert("default");
         } //end switch
     };
 
-    function sortTable() { 
+    function sortTable(descending) { 
         var table, i, x, y; 
         table = document.getElementById("table"); 
         var switching = true; 
@@ -96,14 +96,24 @@ function OrderedTable() {
                 x = rows[i].getElementsByTagName("TD")[0]; 
                 y = rows[i + 1].getElementsByTagName("TD")[0]; 
 
-                // Check if 2 rows need to be switched 
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) 
+                if (descending === true){
+                    // Check if 2 rows need to be switched 
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) //sort descending
                     { 
 
-                    // If yes, mark Switch as needed and break loop 
-                    Switch = true; 
-                    break; 
-                } 
+                        // If yes, mark Switch as needed and break loop 
+                        Switch = true; 
+                        break; 
+                    } 
+                } else {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) //sort ascending
+                    { 
+
+                        Switch = true; 
+                        break; 
+                    } 
+                }
+                
             } 
             if (Switch) { 
                 // Function to switch rows and mark switch as completed 
@@ -113,49 +123,27 @@ function OrderedTable() {
         } 
     };
     //Calling function upon start of component
-    
 
     
     //Gatsby turns the following "html" into react javascript.
     return (
     <div>
         <h1>Ordered Table</h1>
+        <p>Please click the button to create the table first. Need to learn about gatsby lifecycle before I can  have the table generate onLoad.</p>
+        <button id="tabelbtn" onClick={generateTable}>Create Table</button>
+        <br />
+        <br />
         <label htmlFor="order">Choose a sort: </label>
 
         <select id="order" onChange={order}> 
             <option value="Unordered">Unordered</option>
             <option value="AlphaDescending">Alphabetical - Descending</option>
             <option value="AlphaAscending">Alphabetical - Ascending</option>
-        </select>
-        <button onClick={generateTable}>Sort</button>
+        </select>   
+        
+        <div id="divTable">
 
-        <table id="table">
-            <tr>
-                <th>Devs</th>
-            </tr>
-            <tr>
-                <td>Daniel</td>
-            </tr>
-            <tr>
-                <td>Jordan</td>
-            </tr>
-            <tr>
-                <td>Nic</td>
-            </tr>
-            <tr>
-                <td>Vlad</td>
-            </tr>
-            <tr>
-                <td>Selina</td>
-            </tr>
-            <tr>
-                <td>Shanique</td>
-            </tr>
-        </table>
-
-        <table id="table2">
-
-        </table>
+        </div>
 
     </div>
     )
