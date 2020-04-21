@@ -6,6 +6,7 @@ import CheckBoxComp from "../components/CheckBoxComp"
 import OrderedTableComp from "../components/OrderedTableComp"
 import AlertComp from "../components/AlertComp"
 import LinkComp from "../components/LinkComp"
+import SliderComp from "../components/SliderComp"
 /*Any React component defined in src/pages/*.js will automatically become a page.*/
 /*Everything within 'export' must have one parent tag */
 export default () => (
@@ -31,5 +32,8 @@ export default () => (
         <br />
         <br />
         <LinkComp></LinkComp>
+        <br />
+        <br />
+        <SliderComp></SliderComp>
     </div>
 )
