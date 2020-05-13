@@ -2,6 +2,14 @@ import React from "react"
 
 
 function ApiGet() {
+
+    //To be sent via http Post
+    var postParameters = {
+        "categoryName_En" : "test3",
+        "categoryName_Fr" : "test trois"
+    };
+
+
     //Here is where we store javascript functions
     function HttpGet (){
         // Create a request variable and assign a new XMLHttpRequest object to it.
@@ -10,6 +18,9 @@ function ApiGet() {
         // Open a new connection, using the GET request on the URL endpoint
         request.open('GET', 'https://jeopardygame.azurewebsites.net/api/Categories', true);
         console.log("Request Started");
+
+        //Clear label
+        document.getElementById("getResults").innerText = "";
 
         request.onload = function() {
             console.log("Request loaded");
@@ -32,24 +43,22 @@ function ApiGet() {
         // Create a request variable and assign a new XMLHttpRequest object to it.
         var request = new XMLHttpRequest();
 
-        // Open a new connection, using the GET request on the URL endpoint
-        request.open('GET', 'https://localhost:44355/api/Categories', true);
+        // Create a request variable and assign a new XMLHttpRequest object to it.
+        request.open('POST', 'https://jeopardygame.azurewebsites.net/api/Categories', true);
+        request.setRequestHeader("Content-type", "application/json");
+        
         console.log("Request Started");
 
-        request.onload = function() {
-            console.log("Request loaded");
-            // Begin accessing JSON data here
-            var data = JSON.parse(this.response)
+        document.getElementById("postResults").value = "";
 
-            data.forEach(category => {
-                // Log each movie's title
-                console.log(category.id);
-                document.getElementById("getResults").innerText += category.id + " ";
-            });
+        request.onreadystatechange = function () { //Call a function when the state changes.
+            if (request.status == 201) {
+                alert(request.responseText);
+            }
         }
 
         // Send request
-        request.send();
+        request.send(JSON.stringify(postParameters));
         console.log("Request sent");
     };
     
@@ -59,6 +68,7 @@ function ApiGet() {
             <h1 id="header">API Verbs</h1>
             <button id="getBtn" onClick={HttpGet}>Get</button>
             <label htmlFor="getBtn" id="getResults"></label>
+            <br />
 
             <button id="postBtn" onClick={HttpPost}>Post</button>
             <label htmlFor="postBtn" id="postResults"></label>
