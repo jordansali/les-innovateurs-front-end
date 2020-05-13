@@ -7,11 +7,8 @@ function ApiGet() {
         // Create a request variable and assign a new XMLHttpRequest object to it.
         var request = new XMLHttpRequest();
 
-        //set request header
-        //request.setRequestHeader("Access-Control-Allow-Origin", "Accept");
-
         // Open a new connection, using the GET request on the URL endpoint
-        request.open('GET', 'https://localhost:44355/api/Categories', true);
+        request.open('GET', 'https://jeopardygame.azurewebsites.net/api/Categories', true);
         console.log("Request Started");
 
         request.onload = function() {
@@ -21,8 +18,8 @@ function ApiGet() {
 
             data.forEach(category => {
                 // Log each movie's title
-                console.log(category.titleEn);
-                document.getElementById("getResults").innerText += category.titleEn + " ";
+                console.log(category.categoryName_En);
+                document.getElementById("getResults").innerText += category.categoryName_En + " ";
             });
         }
 
@@ -35,11 +32,8 @@ function ApiGet() {
         // Create a request variable and assign a new XMLHttpRequest object to it.
         var request = new XMLHttpRequest();
 
-        //set request header
-        //request.setRequestHeader("Access-Control-Allow-Origin", "Accept");
-
         // Open a new connection, using the GET request on the URL endpoint
-        request.open('GET', 'https://localhost:44324/api/Categories', true);
+        request.open('GET', 'https://localhost:44355/api/Categories', true);
         console.log("Request Started");
 
         request.onload = function() {
@@ -49,8 +43,8 @@ function ApiGet() {
 
             data.forEach(category => {
                 // Log each movie's title
-                console.log(category.categoryNameEn);
-                document.getElementById("getResults").innerText += category.categoryNameEn + " ";
+                console.log(category.id);
+                document.getElementById("getResults").innerText += category.id + " ";
             });
         }
 
