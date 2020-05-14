@@ -42,7 +42,7 @@ function ApiGet() {
                 data.forEach(category => {
                     // Log each movie's title
                     console.log(category.categoryName_En);
-                    document.getElementById("getResults").innerText += category.categoryName_En + " ";
+                    document.getElementById("getResults").innerText += category.categoryName_En + "  ";
                 });
             } else {
                 console.log(data.categoryName_En);
