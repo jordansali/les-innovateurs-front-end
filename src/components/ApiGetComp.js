@@ -57,7 +57,7 @@ function ApiGet() {
     };
 
     function HttpPost (){
-            //To be sent via http Post
+        //To be sent via http Post
         var postParameters = {
             "categoryName_En" : document.getElementById("catEn").value,
             "categoryName_Fr" : document.getElementById("catFr").value
