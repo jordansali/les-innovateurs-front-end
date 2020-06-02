@@ -77,6 +77,8 @@ function ApiGet() {
         request.onreadystatechange = function () { //Call a function when the state changes.
             if (request.status == 201) {
                 document.getElementById("postResults").innerText = request.status + " " + request.statusText;
+            } else {
+                document.getElementById("postResults").innerText = request.status + " " + request.statusText;
             }
         }
 
@@ -109,9 +111,11 @@ function ApiGet() {
         document.getElementById("deleteResults").innerText = "";
 
         request.onreadystatechange = function () { //Call a function when the state changes.
-            //if (request.status == 200) {
+            if (request.status == 200) {
                 document.getElementById("deleteResults").innerText = request.status + " " + request.statusText;
-            //}
+            } else {
+                document.getElementById("putResults").innerText = request.status + " " + request.statusText;;
+            }
         }
 
         // Send request
@@ -142,6 +146,8 @@ function ApiGet() {
         request.onreadystatechange = function () { //Call a function when the state changes.
             if (request.status == 204) {
                 document.getElementById("putResults").innerText = request.status + " Updated.";
+            } else {
+                document.getElementById("putResults").innerText = request.status + " " + request.statusText;;
             }
         }
 
