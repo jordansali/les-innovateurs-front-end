@@ -92,15 +92,15 @@ function ApiGet() {
         var request = new XMLHttpRequest();
 
         var categoryId = document.getElementById("catId").value
-        var url = `https://frenchjeopardyapi.azurewebsites.net/api/Categories/${categoryId}`
+        var url = `https://frenchjeopardyapi.azurewebsites.net/api/Categories?id=${categoryId}`
 
         console.log("CatID: " + categoryId);
         console.log("url: " + url);
 
         //dont run if no numeric value is given
-        if (isNaN(categoryId)){
+        if (isNaN(categoryId) || !categoryId){
             alert("Please provide a numeric value.");
-            return; 
+            return;
         }
 
         // Create a request variable and assign a new XMLHttpRequest object to it.
