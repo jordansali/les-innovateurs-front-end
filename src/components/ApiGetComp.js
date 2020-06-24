@@ -114,7 +114,7 @@ function ApiGet() {
             if (request.status == 200) {
                 document.getElementById("deleteResults").innerText = request.status + " " + request.statusText;
             } else {
-                document.getElementById("putResults").innerText = request.status + " " + request.statusText;;
+                document.getElementById("deleteResults").innerText = request.status + " " + request.statusText;;
             }
         }
 
@@ -125,18 +125,18 @@ function ApiGet() {
     };
 
     function HttpPut(){
-        //To be sent via http Post
+        //To be sent via http Put
         var putParameters = {
             "id" : document.getElementById("putId").value,
-            "categoryName_En" : document.getElementById("putCatEn").value,
-            "categoryName_Fr" : document.getElementById("putCatFr").value
+            "categoryNameEn" : document.getElementById("putCatEn").value,
+            "categoryNameFr" : document.getElementById("putCatFr").value
         };
         
         // Create a request variable and assign a new XMLHttpRequest object to it.
         var request = new XMLHttpRequest();
 
         // Create a request variable and assign a new XMLHttpRequest object to it.
-        request.open('PUT', `https://frenchjeopardyapi.azurewebsites.net/api/Categories/${putParameters.id}`, true);
+        request.open('PUT', `https://frenchjeopardyapi.azurewebsites.net/api/Categories`, true);
         request.setRequestHeader("Content-type", "application/json");
         
         console.log("Request Started");
