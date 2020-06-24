@@ -19,9 +19,9 @@ function ApiGet() {
         console.log(categoryId);
 
         if(categoryId !== null ){
-            url = `https://jeopardygame.azurewebsites.net/api/Categories/${categoryId}`;
+            url = `https://frenchjeopardyapi.azurewebsites.net/api/Categories/${categoryId}`;
         } else {
-            url = 'https://jeopardygame.azurewebsites.net/api/Categories';
+            url = 'https://frenchjeopardyapi.azurewebsites.net/api/Categories';
         }
 
         console.log(url);
@@ -41,12 +41,12 @@ function ApiGet() {
             if (categoryId === null){
                 data.forEach(category => {
                     // Log each movie's title
-                    console.log(category.categoryName_En);
-                    document.getElementById("getResults").innerText += category.categoryName_En + "  ";
+                    console.log(category.categoryNameEn);
+                    document.getElementById("getResults").innerText += category.categoryNameEn + "  ";
                 });
             } else {
-                console.log(data.categoryName_En);
-                document.getElementById("getResults").innerText += data.categoryName_En + " ";
+                console.log(data.categoryNameEn);
+                document.getElementById("getResults").innerText += data.categoryNameEn + " ";
             }
             
         }
@@ -59,15 +59,15 @@ function ApiGet() {
     function HttpPost (){
         //To be sent via http Post
         var postParameters = {
-            "categoryName_En" : document.getElementById("catEn").value,
-            "categoryName_Fr" : document.getElementById("catFr").value
+            "categoryNameEn" : document.getElementById("catEn").value,
+            "categoryNameFr" : document.getElementById("catFr").value
         };
         
         // Create a request variable and assign a new XMLHttpRequest object to it.
         var request = new XMLHttpRequest();
 
         // Create a request variable and assign a new XMLHttpRequest object to it.
-        request.open('POST', 'https://jeopardygame.azurewebsites.net/api/Categories', true);
+        request.open('POST', 'https://frenchjeopardyapi.azurewebsites.net/api/Categories', true);
         request.setRequestHeader("Content-type", "application/json");
         
         console.log("Request Started");
@@ -92,15 +92,15 @@ function ApiGet() {
         var request = new XMLHttpRequest();
 
         var categoryId = document.getElementById("catId").value
-        var url = `https://jeopardygame.azurewebsites.net/api/Categories/${categoryId}`
+        var url = `https://frenchjeopardyapi.azurewebsites.net/api/Categories?id=${categoryId}`
 
         console.log("CatID: " + categoryId);
         console.log("url: " + url);
 
         //dont run if no numeric value is given
-        if (isNaN(categoryId)){
+        if (isNaN(categoryId) || !categoryId){
             alert("Please provide a numeric value.");
-            return; 
+            return;
         }
 
         // Create a request variable and assign a new XMLHttpRequest object to it.
@@ -114,7 +114,7 @@ function ApiGet() {
             if (request.status == 200) {
                 document.getElementById("deleteResults").innerText = request.status + " " + request.statusText;
             } else {
-                document.getElementById("putResults").innerText = request.status + " " + request.statusText;;
+                document.getElementById("deleteResults").innerText = request.status + " " + request.statusText;;
             }
         }
 
@@ -125,18 +125,18 @@ function ApiGet() {
     };
 
     function HttpPut(){
-        //To be sent via http Post
+        //To be sent via http Put
         var putParameters = {
             "id" : document.getElementById("putId").value,
-            "categoryName_En" : document.getElementById("putCatEn").value,
-            "categoryName_Fr" : document.getElementById("putCatFr").value
+            "categoryNameEn" : document.getElementById("putCatEn").value,
+            "categoryNameFr" : document.getElementById("putCatFr").value
         };
         
         // Create a request variable and assign a new XMLHttpRequest object to it.
         var request = new XMLHttpRequest();
 
         // Create a request variable and assign a new XMLHttpRequest object to it.
-        request.open('PUT', `https://jeopardygame.azurewebsites.net/api/Categories/${putParameters.id}`, true);
+        request.open('PUT', `https://frenchjeopardyapi.azurewebsites.net/api/Categories`, true);
         request.setRequestHeader("Content-type", "application/json");
         
         console.log("Request Started");
