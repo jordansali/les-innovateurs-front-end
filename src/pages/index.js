@@ -13,7 +13,7 @@ import ApiGetComp from "../components/ApiGetComp"
 export default () => (
     <div> 
         <a id="page_top"></a>
-        <h1>Testing branch!!!</h1>
+        <h1>Testing branch!!! Test of change</h1>
         <div>Hello world!!! People...! This is a test site built using Gatsby. Test of change</div>
         <br />
         <br />
